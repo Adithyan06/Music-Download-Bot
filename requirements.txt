@@ -8,11 +8,9 @@ requests
 dnspython
 python-arq
 yt-dlp==2022.04.08
-ffmpeg-python
 youtube_search
 fake_useragent>=0.1.11
 youtube-search-python
-ffmpeg-normalize
 ytmusicapi
 spotdl
 rapidfuzz
