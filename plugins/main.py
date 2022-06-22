@@ -93,7 +93,6 @@ async def startprivate(client, message):
         ]
     )
     welcomed = f"ʜᴇʟʟᴏ **{message.from_user.mention()}** 👋\n\nɪ ᴀᴍ ᴀ ᴀᴅᴠᴀɴᴄᴇᴅ ᴍᴜsɪᴄ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ᴡɪᴛʜ ᴍᴀɴʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ꜰᴇᴀᴛᴜʀᴇs [🤩](https://telegra.ph/file/2ea4c651c9a06f9a65364.mp4)\n\n♥️ ɪ ᴄᴀɴ ᴅᴏᴡɴʟᴏᴀᴅ sᴏɴɢs ꜰʀᴏᴍ sᴘᴏᴛɪꜰʏ, ᴊɪᴏsᴀᴀᴠɴ, ʏᴏᴜᴛᴜʙᴇ, ᴇᴛᴄ..\n\nᴄʜᴇᴄᴋ /help ᴛᴏ sᴇᴇ ᴍʏ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs 🥴"
-    await message.reply_chat_action("typing")
     await message.reply_text(welcomed, reply_markup=joinButton, quote=True)
     raise StopPropagation
 
@@ -223,5 +222,4 @@ async def _banned_usrs(c, m):
 @Client.on_message(filters.command('help')  & filters.private)
 async def help(client, message):
        Help_buttons = InlineKeyboardMarkup([[InlineKeyboardButton('𝗖𝗹𝗼𝘀𝗲 ❌', callback_data="close")]])
-       await message.reply_chat_action("typing")
        await message.reply_text(text=Help_text, reply_markup=Help_buttons, quote=True)
