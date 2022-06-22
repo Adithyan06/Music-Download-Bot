@@ -8,8 +8,6 @@ requests
 dnspython
 python-arq
 yt-dlp==2022.04.08
-gtts
-googletrans==4.0.0rc1
 httpx==0.13.3
 ffmpeg-python
 beautifulsoup4==4.9.1
@@ -23,9 +21,6 @@ rapidfuzz
 wget
 pillow
 hachoir
-py-youtube
-telegraph
 shazamio==0.0.2
-gpytranslate==1.3.0
 pyromod
 music_tag
