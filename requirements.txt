@@ -5,8 +5,6 @@ Pyrogram
 TgCrypto
 aiofiles
 requests
-dnspython
-python-arq
 yt-dlp==2022.04.08
 youtube_search
 fake_useragent>=0.1.11
