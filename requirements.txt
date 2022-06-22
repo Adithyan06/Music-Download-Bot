@@ -8,9 +8,7 @@ requests
 dnspython
 python-arq
 yt-dlp==2022.04.08
-httpx==0.13.3
 ffmpeg-python
-beautifulsoup4==4.9.1
 youtube_search
 fake_useragent>=0.1.11
 youtube-search-python
