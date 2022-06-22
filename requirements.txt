@@ -15,6 +15,3 @@ rapidfuzz
 wget
 pillow
 hachoir
-shazamio==0.0.2
-pyromod
-music_tag
