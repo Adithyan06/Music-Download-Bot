@@ -1,0 +1,71 @@
+{
+    "name": "Music Downloader",
+    "description": "A Telegram bot to download high quality Songs.",  
+    "logo": "https://telegra.ph/file/0725e7531e013332b0c9f.jpg", 
+    "keywords": [
+        "Pyrogram",
+        "Musicbot"
+    ],
+    "repository": "https://github.com/Adithyan06/Musicdownloader", 
+    "env": {
+        "BOT_TOKEN": {
+            "description": "You Telegram Bot Token from @BotFather",
+            "value": "",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Your API Hash from my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        "API_ID": {
+            "description": "Your APP ID from my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        "START_MSG": {
+            "description": "Start Message",
+            "value": "<b>Hello {} 👋,\nI am a Music Downloader 😎\nI can Download songs from Spotify,JioSaavn, YouTube etc..\nCheck /help for more info</b>",
+            "required": false
+        },
+        "BROADCAST_AS_COPY": {
+            "description": "Value should be True or False. Broadcast with Forward Tag or as Copy.(Without Forward Tag)",
+            "value": "True",
+            "required": false
+        },
+        "DB_URL": {
+            "description": "MongoDB.com database url",
+            "value": "",
+            "required": true
+        },
+        "DB_NAME": {
+            "description": "A database name without white space(example : broadcastbot)",
+            "value": "Avengers",
+            "required": false
+        },
+        "AUTH_USERS": {
+            "description": "Create a list of User Ids to use this bot(ADMINS). Seperate by space.Get it from @TGIdsBot",
+            "value": "",
+            "required": true
+        },
+        "OWNER": {
+            "description": "Your Username without @",
+            "value": "Peterparker6",
+            "required": false
+        }
+    },
+    "buildpacks": [
+        {
+           "url": "heroku/python"
+        },
+        {
+           "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
