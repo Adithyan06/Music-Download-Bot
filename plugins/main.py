@@ -2,8 +2,6 @@ import os
 import traceback
 import logging
 import asyncio
-from time import time
-from datetime import datetime
 from pyrogram import Client
 from pyrogram import StopPropagation, filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -12,7 +10,6 @@ import config
 from handlers.broadcast import broadcast
 from handlers.check_user import handle_user_status
 from handlers.database import Database
-from plugins.translate import TEXT
 
 LOG_CHANNEL = config.LOG_CHANNEL
 AUTH_USERS = config.AUTH_USERS
@@ -53,24 +50,6 @@ Help_text = """<u>🌟**Available Commands**</u>
 
 # -------------------------------------------------------------------------------------------------------------------------------------
 
-About_text = """--<u>**About Me 😎**</u>--
-
-🍁 ɴᴀᴍᴇ : `Music Downloader`
-
-🧑‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ : [Peter Parker](https://t.me/Peterparker6)
-
-📝 ʟᴀɴɢᴜᴀɢᴇ : `Python3`
-
-💎 sᴇʀᴠᴇʀ : [Heroku](https://heroku.com/)
-
-💮 ʟɪʙʀᴀʀʏ : [Pyrogram](https://docs.pyrogram.org/)
-
-💨 ʙᴜɪʟᴅ sᴛᴀᴛs : `V5.0 [Stable]`
-
-⭕ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ : [🤥Click here](https://github.com)"""
-
-# ----------------------;-----------;;;;;-------------------------------_--------------
-
 @Client.on_callback_query()
 async def cb_handler(bot, update):
     if update.data == "source":
@@ -89,27 +68,6 @@ async def cb_handler(bot, update):
 @Client.on_message(filters.private)
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
-
-START_TIME = datetime.utcnow()
-START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
-TIME_DURATION_UNITS = (
-    ('week', 60 * 60 * 24 * 7),
-    ('day', 60 * 60 * 24),
-    ('hour', 60 * 60),
-    ('min', 60),
-    ('sec', 1)
-)
-
-async def _human_time_duration(seconds):
-    if seconds == 0:
-        return 'inf'
-    parts = []
-    for unit, div in TIME_DURATION_UNITS:
-        amount, seconds = divmod(int(seconds), div)
-        if amount > 0:
-            parts.append('{} {}{}'
-                         .format(amount, unit, "" if amount == 1 else "s"))
-    return ', '.join(parts)
 
 @Client.on_message(filters.command("start") & filters.private)
 async def startprivate(client, message):
@@ -267,49 +225,3 @@ async def help(client, message):
        Help_buttons = InlineKeyboardMarkup([[InlineKeyboardButton('𝗖𝗹𝗼𝘀𝗲 ❌', callback_data="close")]])
        await message.reply_chat_action("typing")
        await message.reply_text(text=Help_text, reply_markup=Help_buttons, quote=True)
-
-@Client.on_message(filters.command('about')  & filters.private)
-async def about(client, message):
-       About_buttons = InlineKeyboardMarkup([[InlineKeyboardButton('𝗖𝗹𝗼𝘀𝗲 ❌', callback_data="close")]])
-       await message.reply_chat_action("typing")
-       await message.reply_text(text=About_text, reply_markup=About_buttons, quote=True)
-
-@Client.on_message(filters.command("ping") & filters.private)
-async def ping_pong(client, m: Message): 
-    start = time()
-    copy = await m.reply_text("Pinging...")
-    delta_ping = time() - start
-    await copy.edit_text(
-        "🔥 `PONG!!`\n"
-        f"💛 `{delta_ping * 1000:.3f} ms`"
-    )
-
-@Client.on_message(filters.command("uptime") & filters.private)
-async def get_uptime(client, m: Message):
-    current_time = datetime.utcnow()
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = await _human_time_duration(int(uptime_sec))
-    await m.reply_chat_action("typing")
-    await m.reply_text(
-        "⭕ Bot status:\n\n"
-        f"• **Uptime:** `{uptime}`\n\n"
-        f"• **Start time:** `{START_TIME_ISO}`"
-    )   
-
-@Client.on_message(filters.command("rate") & filters.private)
-async def rate(client, message):
-       chat_id = message.from_user.id
-       Button = InlineKeyboardMarkup(
-           [[
-           InlineKeyboardButton('𝗥𝗮𝘁𝗲 𝗺𝗲 🌟', url='https://t.me/tlgrmcbot?start=musicdownloadv2bot-review'),
-           InlineKeyboardButton('𝗖𝗹𝗼𝘀𝗲 ❌', callback_data="close")
-           ]]
-       )
-       Message = f"**{message.from_user.mention()}**,__I am very Happy to Hear That! 🥰\n\nThis will be an inspiration to my master😀\nRate me [Here](https://t.me/tlgrmcbot?start=musicdownloadv2bot-review)__"
-       await message.reply_chat_action("typing")
-       await message.reply_text(text=Message, reply_markup=Button, quote=True)
-
-@Client.on_message(filters.command(["lang", "language"]))
-async def lang(client, message):
-    CLOSE = InlineKeyboardMarkup([[InlineKeyboardButton('Close ❌', callback_data="close")]])
-    await message.reply_text(text=TEXT, quote=True, reply_markup=CLOSE)
