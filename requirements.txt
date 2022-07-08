@@ -15,4 +15,4 @@ rapidfuzz
 wget
 pillow
 hachoir
-pymongo
+dnspython
