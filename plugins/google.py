@@ -6,8 +6,6 @@ import requests
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
-from plugins.shazam import edit_or_reply
-
 from pyrogram import filters, Client
 from pyrogram.types import Message
 
