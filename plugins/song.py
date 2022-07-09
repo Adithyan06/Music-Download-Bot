@@ -91,13 +91,12 @@ async def song(client, message):
 #       await message.reply_photo(thumbnail, caption=ironman, parse_mode='md', ttl_seconds=500)
         await message.reply_audio(audio=audio_file, caption=reply, parse_mode='md',quote=True, title=title, duration=dur, performer=str(info_dict["uploader"]), reply_markup=buttons, thumb=thor)
         await m.delete()
-    except Exception as e:
+    except Exception as ex:
         await m.edit(f'😔**Failed**\n\n__Report this Error to my [Master](https://t.me/Peterparker6)\nOr try__ : `/spotify {query}`')
-        print(e)
+        print(ex)
     try:
         os.remove(audio_file)
 #       os.remove(thumb_name)
-        os.remove(thor)
     except Exception as e:
         print(e)
 
