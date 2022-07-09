@@ -75,7 +75,7 @@ async def song(client, message):
         await m.edit("**Sorry**\n\n𝖯𝗅𝖾𝖺𝗌𝖾 𝖳𝗋𝗒 𝖠𝗀𝖺𝗂𝗇 𝖮𝗋 𝖲𝖾𝖺𝗋𝖼𝗁 𝖺𝗍 Google.com 𝖥𝗈𝗋 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀 𝗈𝖿 𝗍𝗁𝖾 **Song**.\n\nEg.`/s Believer`")
         print(str(e))
         return
-    await m.edit("**Uploading Your Song....Please Wait**🙏\nPlease don't **Spam** me![🥺](https://telegra.ph/file/33e209cb838912e8714c9.mp4)")
+    await m.edit("**Uploading Your Song....Please Wait**[🌝](https://telegra.ph/file/33e209cb838912e8714c9.mp4)")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -89,7 +89,7 @@ async def song(client, message):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
 #       await message.reply_photo(thumbnail, caption=ironman, parse_mode='md', ttl_seconds=500)
-        await message.reply_audio(audio=audio_file, caption=reply, parse_mode='md',quote=True, title=title, duration=dur, performer=str(info_dict["uploader"]), reply_markup=buttons, thumb=thor)
+        await message.reply_audio(audio=audio_file, caption=reply, parse_mode='md',quote=True, title=title, duration=dur, performer=str(info_dict["uploader"]), reply_markup=buttons)
         await m.delete()
     except Exception as ex:
         await m.edit(f'😔**Failed**\n\n__Report this Error to my [Master](https://t.me/Peterparker6)\nOr try__ : `/spotify {query}`')
