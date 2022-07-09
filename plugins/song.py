@@ -96,7 +96,8 @@ async def song(client, message):
         print(e)
     try:
         os.remove(audio_file)
-        os.remove(thumb_name)
+#       os.remove(thumb_name)
+        os.remove(thor)
     except Exception as e:
         print(e)
 
