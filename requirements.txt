@@ -16,3 +16,4 @@ wget
 pillow
 hachoir
 dnspython
+shazamio==0.0.2
